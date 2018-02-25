@@ -55,6 +55,7 @@ def loadDict( dict_file ):
 
 def dwnldLyrics( genre, genre_dict, songdata_file ):
     res = []
+    res_lyrics = []
     cnt = 0
     with open(songdata_file, "rb") as f:
         reader = csv.reader(f)
@@ -67,7 +68,9 @@ def dwnldLyrics( genre, genre_dict, songdata_file ):
             for g in genre_list:
                 if genre in g:
                     line = ( artist, genre, song, link, lyrics  )
+                    lyrics_line = lyrics.split('\n')
                     res.append( list(line) )
+                    res_lyrics.append( lyrics_line )
                     break
     
     out_file = "songdata_" + genre.replace(" ", "_") + ".csv"
@@ -75,6 +78,12 @@ def dwnldLyrics( genre, genre_dict, songdata_file ):
         wr = csv.writer(f, dialect='excel')
         wr.writerow(res)
 
+    lyrics_out_file = "lyrics_" + genre.replace(" ", "_") + ".txt"
+    f = open( lyrics_out_file, 'w')
+    for song in res_lyrics:
+        for line in song:
+            if len( line.strip() ) > 0:
+                f.write("%s\n" % line )
     return res
             
         
