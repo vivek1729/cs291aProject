@@ -21,7 +21,7 @@ def combine_sent( fname, length ):
         for c in content:
             cnt += 1
             big_sent += c.rstrip() + " <eos> "
-            if cnt % 4 == 0:
+            if cnt % length == 0:
                 big_sent.replace("\n", " <eos> ")
                 tr.append( big_sent )
                 big_sent = ""
