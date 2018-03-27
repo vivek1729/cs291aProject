@@ -1,5 +1,6 @@
-# cs291aProject
-Project repo for Deep Learning NLP
+# cs291aProject (defunkt)
+Project repo for Deep Learning NLP (now defunkt)
+The latest repo with updated code and README can be found at https://github.com/vivek1729/style_trasnfer_lyric
 
 #Crawling data for a specific genre by artist
 `pylrics3` can be used to fetch lyrics by artist.
